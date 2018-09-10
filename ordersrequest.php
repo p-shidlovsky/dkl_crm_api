@@ -6,7 +6,7 @@
         'name' => 'Имя, фамилия запрашивающего (text)',
         'company' => 'Наименование фирмы запрашивающего (text)',
         'email' => 'test@test.com',
-        'phone' => 'Телефонный номер запрашивающего (phone)',
+        'phone' => '+123123123',
         'city_from' => 'Город отправителя (text)',
         'region_from' => 'Регион/Штат отправителя (text)',
         'country_from' => 'Страна отправителя (text)',
@@ -31,5 +31,4 @@
 
     print_r($types_list);
     print_r($respons);
-
 ?>

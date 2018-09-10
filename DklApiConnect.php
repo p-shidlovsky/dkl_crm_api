@@ -13,11 +13,14 @@ class DklApiConnect
     private $params =[];
 
 
-    function __construct($publkey, $privatekey)
+    function __construct($publkey, $privatekey,$url=false)
     {
         $this->publkey = $publkey;
         $this->privatekey = $privatekey;
         $this->params['data'] =[];
+        if($url){
+            $this->root_url = $url;
+        }
     }
 
     public function setParams($params)
@@ -42,12 +45,34 @@ class DklApiConnect
         return $this->makeRequest('ordersrequest/create');
     }
 
+    //Вызов курьера (Заказ)
+    public function addOrder(){
+        return $this->makeRequest('orders/create');
+    }
+    
     //Получить список типов доставки
     public function getTypesList(){
         return $this->makeRequest('gettypeslist');
     }
 
+    //Получить список причин експорта
+    public function getExportCauseList(){
+        return $this->makeRequest('getexportcauselist');
+    }
+    
+    //Получить список условий експорта
+    public function getExportTermsList(){
+        return $this->makeRequest('getexporttermslist');
+    }
 
+    //Получить список кто оплачивает
+    public function getStockPayList(){
+        return $this->makeRequest('getstockpaynames');
+    }
+
+    
+    
+    
 
     public function makeRequest($path)
     {
