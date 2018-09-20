@@ -3,7 +3,7 @@
     $api = new DklApiConnect('public key', 'private key');
 
     $data=[
-            'email'=>'p_shidlovsky@mail.ru1233',
+            'email'=>'email@mail.ru',
             'password' => '123123',
             'login' => 'API USER CREATE',
             'phone' => '123123123',
