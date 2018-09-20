@@ -1,5 +1,4 @@
 <?php
-namespace common\components;
 
 // DKL API connection class, for API version 1;
 
@@ -68,6 +67,16 @@ class DklApiConnect
     //Получить список кто оплачивает
     public function getStockPayList(){
         return $this->makeRequest('getstockpaynames');
+    }
+
+    //Логин клиента
+    public function userLogin(){
+        return $this->makeRequest('clients/login');
+    }
+
+    //Регистрация клиента
+    public function userRegister(){
+        return $this->makeRequest('clients/registration');
     }
 
     
