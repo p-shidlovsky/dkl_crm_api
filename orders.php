@@ -50,12 +50,17 @@
             'pickup_timefrom'=>'12:45',
             'pickup_timeto'=>'15:55',
             'stock_comment'=>'Коментарий, спец. информация',
+            'items' => [
+                ['client_comment'=>'Комент','items_type'=>1,'delivery_type'=>'package','items_count'=>12,'items_weight'=>44,'items_length'=>5,'items_width'=>54,'items_height'=>9,'items_price'=>49,'items_price_currency'=>'USD'],
+                ['client_comment'=>'Комент 2','items_type'=>0,'delivery_type'=>'pallet','items_count'=>120,'items_weight'=>440,'items_length'=>500,'items_width'=>540,'items_height'=>900,'items_price'=>490,'items_price_currency'=>'EUR'],
+            ],
         ];
 
         $export_cause_list = $api->getExportCauseList(); // Список причин експорта
         $export_terms_list = $api->getExportTermsList(); // Список условий експорта
         $stock_pay_list = $api->getStockPayList(); // Список условий експорта
         $types_list = $api->getTypesList(); // Список тип услуги
+        $deliverytypes_list = $api->getDeliveryTypeList(); // Список тип отправления посылки
         $respons = $api->setParams($data)->addOrder(); // Ответ API при создании вызова курьера(заказа)
 
         print_r(json_decode($respons));

@@ -64,6 +64,11 @@ class DklApiConnect
         return $this->makeRequest('getexporttermslist');
     }
 
+    //Получить список тип отправления посылки
+    public function getDeliveryTypeList(){
+        return $this->makeRequest('getdeliverytypenames');
+    }
+
     //Получить список кто оплачивает
     public function getStockPayList(){
         return $this->makeRequest('getstockpaynames');
@@ -79,22 +84,17 @@ class DklApiConnect
         return $this->makeRequest('clients/registration');
     }
 
-    
-    
-    
-
     public function makeRequest($path)
     {
         try {
             $data = base64_encode(json_encode($this->params['data']));
             $signature = base64_encode(sha1($this->privatekey.$data.$this->privatekey,1));
             $this->params['signature'] = $signature;
-
             $full_data = json_encode($this->params);
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_RETURNTRANSFER , TRUE );
             curl_setopt($ch, CURLOPT_URL, $this->root_url.$path);
-            curl_setopt($ch, CURLOPT_POST, count($full_data));
+            curl_setopt($ch, CURLOPT_POST, strlen($full_data));
             curl_setopt($ch, CURLOPT_POSTFIELDS, $full_data);
             curl_setopt($ch, CURLOPT_HTTPHEADER, array(
                 'X-Auth-Token: '.$this->publkey,
