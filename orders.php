@@ -56,12 +56,18 @@
             ],
         ];
 
+
+        $files = [
+          ['path'=>'path_to_file/image.png','name'=>'image.png'],
+          ['path'=>'path_to_file/image2.png','name'=>'image2.png'],
+        ];
+
         $export_cause_list = $api->getExportCauseList(); // Список причин експорта
         $export_terms_list = $api->getExportTermsList(); // Список условий експорта
         $stock_pay_list = $api->getStockPayList(); // Список условий експорта
         $types_list = $api->getTypesList(); // Список тип услуги
         $deliverytypes_list = $api->getDeliveryTypeList(); // Список тип отправления посылки
-        $respons = $api->setParams($data)->addOrder(); // Ответ API при создании вызова курьера(заказа)
+        $respons = $api->setParams($data)->setFiles($files)->addOrder(); // Ответ API при создании вызова курьера(заказа)
 
         print_r(json_decode($respons));
 ?>
